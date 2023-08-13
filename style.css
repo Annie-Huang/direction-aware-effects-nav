@@ -76,9 +76,13 @@ nav li:hover + li {
    Meaning apply the styling on the <li> when the <li> has a next sibling, which is currently on hover
 */
 /*nav li:has(+ :hover) {*/
-nav li:has(+ :hover)::after {
-  /*color: hotpink;*/
+/*nav li:has(+ :hover)::after {
+  !*color: hotpink;*!
   translate: 100%;
+}*/
+/* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:has(+ :hover)::after' */
+nav li:has(+ :hover) {
+  --_translate: 100%;
 }
 
 nav a {
