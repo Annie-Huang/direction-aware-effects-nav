@@ -37,13 +37,19 @@ nav li::after {
   width: 100%;
   background: orangered;
 
-  scale: 0 1;
+  translate: var(--_translate, 0);
+  scale: var(--_width, 0) 1;
   transition: scale 250ms, translate 250ms;
 }
-nav li:hover::after {
-  /* When user just hover a <li> without hovering on another <li> first,
-     Create animation of scale from 0-1 on the width from the middle when hover */
+
+/*nav li:hover::after {
+  !* When user just hover a <li> without hovering on another <li> first,
+     Create animation of scale from 0-1 on the width from the middle when hover *!
   scale: 1 1;
+}*/
+/* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:hover::after'*/
+nav li:hover {
+  --_width: 1;
 }
 
 /*
@@ -57,9 +63,13 @@ nav li:hover::after {
 
 /* This will show the underline in 'Pricing' (3rd one) disappear when you hover over 'About' (2nd one) */
 /*nav li:hover + li {*/
-nav li:hover + li::after {
-  /*color: hotpink;*/
+/*nav li:hover + li::after {
+  !*color: hotpink;*!
   translate: -100%;
+}*/
+/* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:hover + li::after' */
+nav li:hover + li {
+  --_translate: -100%;
 }
 
 /* This will show when you hover on 'Pricing' (3rd one), 'About' (2nd one)'s underline will move in from the right
