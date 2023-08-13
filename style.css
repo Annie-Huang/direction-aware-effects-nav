@@ -24,8 +24,10 @@ nav li {
   position: relative;
   padding-inline: calc(var(--_gap) / 2);
 }
-/*nav li::after {*/
-nav li:nth-child(3)::after {
+
+/* Setting the effect on 3rd child only so it is easy to show effect */
+nav li::after {
+  /*nav li:nth-child(3)::after {*/
   content: '';
   position: absolute;
   left: 0;
