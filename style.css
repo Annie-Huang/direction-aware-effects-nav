@@ -20,7 +20,7 @@ nav ul {
 }
 
 nav li {
-  overflow: hidden;
+  /*overflow: hidden;*/
   position: relative;
   padding-inline: calc(var(--_gap) / 2);
 }
@@ -44,10 +44,20 @@ nav li:hover::after {
   scale: 1 1;
 }
 
+/* This will show the underline in 'Pricing' (3rd one) disappear when you hover over 'About' (2nd one) */
 /*nav li:hover + li {*/
 nav li:hover + li::after {
   /*color: hotpink;*/
   translate: -100%;
+}
+
+/* This will show when you hover on 'Pricing' (3rd one), 'About' (2nd one)'s underline will move in from the right
+   Meaning apply the styling on the <li> when the <li> has a next sibling, which is currently on hover
+*/
+/*nav li:has(+ :hover) {*/
+nav li:has(+ :hover)::after {
+  /*color: hotpink;*/
+  translate: 100%;
 }
 
 nav a {
