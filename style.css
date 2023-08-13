@@ -23,7 +23,8 @@ nav li {
   position: relative;
   padding-inline: calc(var(--_gap) / 2);
 }
-nav li::after {
+/*nav li::after {*/
+nav li:nth-child(3)::after {
   content: '';
   position: absolute;
   left: 0;
@@ -32,11 +33,12 @@ nav li::after {
   width: 100%;
   background: orangered;
 
-  scale: 0 1;
+  scale: 1 1;
   transition: scale 250ms;
 }
 nav li:hover::after {
-  /* Create animation of scale from 0-1 on the width from the middle when hover */
+  /* When user just hover a <li> without hovering on another <li> first,
+     Create animation of scale from 0-1 on the width from the middle when hover */
   scale: 1 1;
 }
 
