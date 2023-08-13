@@ -44,6 +44,12 @@ nav li:hover::after {
   scale: 1 1;
 }
 
+/*
+!!!! The solution for the problem is when we hover something that is currently have the next <li> showing underline,
+     We will make the next <li>'s underline slowly shrink 1-0 from the right to left position of the next <li>.
+     We will make the current <li>'s underline slow stretch 01 from the right to left position of current <li>
+*/
+
 /* This will show the underline in 'Pricing' (3rd one) disappear when you hover over 'About' (2nd one) */
 /*nav li:hover + li {*/
 nav li:hover + li::after {
