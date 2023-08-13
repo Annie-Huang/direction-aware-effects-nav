@@ -20,7 +20,7 @@ nav ul {
 }
 
 nav li {
-  /*overflow: hidden;*/
+  overflow: hidden;
   position: relative;
   padding-inline: calc(var(--_gap) / 2);
 }
@@ -35,7 +35,7 @@ nav li:nth-child(3)::after {
   width: 100%;
   background: orangered;
 
-  scale: 1 1;
+  scale: 0 1;
   transition: scale 250ms, translate 250ms;
 }
 nav li:hover::after {
@@ -48,6 +48,9 @@ nav li:hover::after {
 !!!! The solution for the problem is when we hover something that is currently have the next <li> showing underline,
      We will make the next <li>'s underline slowly shrink 1-0 from the right to left position of the next <li>.
      We will make the current <li>'s underline slow stretch 01 from the right to left position of current <li>
+
+     You can test with li:nth-child(3)::after to have scale 0 1 && nav li to have overflow: hidden;
+     And then move from Pricing to About and Pricing to Blog to see effect.
 */
 
 /* This will show the underline in 'Pricing' (3rd one) disappear when you hover over 'About' (2nd one) */
