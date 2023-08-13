@@ -39,7 +39,12 @@ nav li::after {
 
   translate: var(--_translate, 0);
   scale: var(--_width, 0) 1;
-  transition: scale 250ms, translate 250ms;
+
+  /*transition: scale 250ms, translate 250ms;*/
+  /* When hover on the current element, we want to prev|next element (assume they are the current underlined one) to translate first (disappearing first)
+     Before we scale (create the underline) of the current element. The prev|next element takes 500ms to translate, and I delay scale for 300ms, so there is 200ms overlap with each other */
+  transition: scale 300ms var(--_scale-delay, 0ms),
+    translate 500ms var(--_translate-delay, 0ms);
 }
 
 /*nav li:hover::after {
@@ -70,6 +75,7 @@ nav li:hover {
 /* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:hover + li::after' */
 nav li:hover + li {
   --_translate: -100%;
+  --_scale-delay: 300ms; /* keep it the same as the duration value of 300ms */
 }
 
 /* This will show when you hover on 'Pricing' (3rd one), 'About' (2nd one)'s underline will move in from the right
@@ -83,6 +89,7 @@ nav li:hover + li {
 /* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:has(+ :hover)::after' */
 nav li:has(+ :hover) {
   --_translate: 100%;
+  --_scale-delay: 300ms;
 }
 
 nav a {
