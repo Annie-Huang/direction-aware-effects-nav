@@ -31,6 +31,13 @@ nav li::after {
   height: 3px;
   width: 100%;
   background: orangered;
+
+  scale: 0 1;
+  transition: scale 250ms;
+}
+nav li:hover::after {
+  /* Create animation of scale from 0-1 on the width from the middle when hover */
+  scale: 1 1;
 }
 
 nav a {
