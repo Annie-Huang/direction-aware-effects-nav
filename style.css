@@ -22,7 +22,8 @@ nav ul {
 nav li {
   overflow: hidden;
   position: relative;
-  padding-inline: calc(var(--_gap) / 2);
+  /*padding-inline: calc(var(--_gap) / 2);*/
+  padding: calc(var(--_gap) / 2);
 }
 
 /* Setting the effect on 3rd child only so it is easy to show effect */
