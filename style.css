@@ -41,8 +41,8 @@ nav li::after {
   scale: var(--_width, 0) 1;
 
   /*transition: scale 250ms, translate 250ms;*/
-  /* When hover on the current element, we want to prev|next element (assume they are the current underlined one) to translate first (disappearing first)
-     Before we scale (create the underline) of the current element. The prev|next element takes 500ms to translate, and I delay scale for 300ms, so there is 200ms overlap with each other */
+  /* What Kevin wants to give is the effect that it stretch to the next|prev element first, before the current element shrink.
+     But if you move quickly between elements, you will find the animation start acting funny */
   transition: scale 300ms var(--_scale-delay, 0ms),
     translate 500ms var(--_translate-delay, 0ms);
 }
@@ -76,6 +76,7 @@ nav li:hover {
 nav li:hover + li {
   --_translate: -100%;
   --_scale-delay: 300ms; /* keep it the same as the duration value of 300ms */
+  --_translate-delay: 200ms;
 }
 
 /* This will show when you hover on 'Pricing' (3rd one), 'About' (2nd one)'s underline will move in from the right
@@ -90,6 +91,7 @@ nav li:hover + li {
 nav li:has(+ :hover) {
   --_translate: 100%;
   --_scale-delay: 300ms;
+  --_translate-delay: 200ms;
 }
 
 nav a {
