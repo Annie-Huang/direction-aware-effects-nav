@@ -43,7 +43,7 @@ nav li::after {
 
   /*transition: scale 250ms, translate 250ms;*/
   /* What Kevin wants to give is the effect that it stretch to the next|prev element first, before the current element shrink.
-     But if you move quickly between elements, you will find the animation start acting funny */
+     But if you move quickly between elements, you will find the animation start acting funny. Kevin knows this. It's a css only solution hence not perfect */
   transition: scale 300ms var(--_scale-delay, 0ms),
     translate 500ms var(--_translate-delay, 0ms);
 }
@@ -54,7 +54,9 @@ nav li::after {
   scale: 1 1;
 }*/
 /* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:hover::after'*/
-nav li:hover {
+/* Give the stretch and shrink effect when user uses keyboard only (so it doesn't have the concept of mouse hover from one element and move to another element) */
+nav li:hover,
+nav li:focus-within {
   --_width: 1;
 }
 
