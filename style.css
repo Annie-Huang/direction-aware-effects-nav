@@ -67,32 +67,37 @@ nav li:hover {
      And then move from Pricing to About and Pricing to Blog to see effect.
 */
 
-/* This will show the underline in 'Pricing' (3rd one) disappear when you hover over 'About' (2nd one) */
-/*nav li:hover + li {*/
-/*nav li:hover + li::after {
-  !*color: hotpink;*!
-  translate: -100%;
-}*/
-/* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:hover + li::after' */
-nav li:hover + li {
-  --_translate: -100%;
-  --_scale-delay: 300ms; /* keep it the same as the duration value of 300ms */
-  --_translate-delay: 200ms;
-}
+/* Check if the browser support :has(h1), if it does, doing the following logic, it doesn't means the h1 has to be in the index.html.
+   'has' is currently support in chrome but not firefox. So in firefox, we fall back at the shrinking and stretching solution (not translation)
+ */
+@supports selector(:has(h1)) {
+  /* This will show the underline in 'Pricing' (3rd one) disappear when you hover over 'About' (2nd one) */
+  /*nav li:hover + li {*/
+  /*nav li:hover + li::after {
+    !*color: hotpink;*!
+    translate: -100%;
+  }*/
+  /* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:hover + li::after' */
+  nav li:hover + li {
+    --_translate: -100%;
+    --_scale-delay: 300ms; /* keep it the same as the duration value of 300ms */
+    --_translate-delay: 200ms;
+  }
 
-/* This will show when you hover on 'Pricing' (3rd one), 'About' (2nd one)'s underline will move in from the right
-   Meaning apply the styling on the <li> when the <li> has a next sibling, which is currently on hover
-*/
-/*nav li:has(+ :hover) {*/
-/*nav li:has(+ :hover)::after {
-  !*color: hotpink;*!
-  translate: 100%;
-}*/
-/* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:has(+ :hover)::after' */
-nav li:has(+ :hover) {
-  --_translate: 100%;
-  --_scale-delay: 300ms;
-  --_translate-delay: 200ms;
+  /* This will show when you hover on 'Pricing' (3rd one), 'About' (2nd one)'s underline will move in from the right
+     Meaning apply the styling on the <li> when the <li> has a next sibling, which is currently on hover
+  */
+  /*nav li:has(+ :hover) {*/
+  /*nav li:has(+ :hover)::after {
+    !*color: hotpink;*!
+    translate: 100%;
+  }*/
+  /* use custom property so we don't need to add ::after for the selector, end result is the same as above when it using 'nav li:has(+ :hover)::after' */
+  nav li:has(+ :hover) {
+    --_translate: 100%;
+    --_scale-delay: 300ms;
+    --_translate-delay: 200ms;
+  }
 }
 
 nav a {
